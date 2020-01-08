@@ -1,13 +1,13 @@
 TMUX_PLUGINS:=${HOME}/.shellter/var/tmux/plugins
 .PHONY: \
-	tmux ${HOME}/.tmux.conf
+	${HOME}/.tmux.conf
 
 all: ${HOME}/.tmux.conf ${TMUX_PLUGINS}/tpm
 	make ${HOME}/.tmux.conf
 	make ${TMUX_PLUGINS}/tpm
 ${HOME}/.tmux.conf:
-	ln -sf $(realpath ./tmux/tmux.conf) $@
+	ln -svf $(realpath ./tmux.conf) $@
 ${TMUX_PLUGINS}:
-	mkdir -p $@
+	mkdir -vp $@
 ${TMUX_PLUGINS}/tpm: ${TMUX_PLUGINS}
 	git clone https://github.com/tmux-plugins/tpm $@
